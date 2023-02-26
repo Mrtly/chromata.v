@@ -4,7 +4,7 @@
     <div class="border-b border-burnt shadow-md p-5 lg:px-10 lg:py-6">
       <div class="flex items-center justify-between">
         <h1 class="pt-2 text-xl font-medium">Create a palette based on color scheme per HSL values</h1>
-        <div class="hidden lg:block underline text-slate-500"><router-link :to="{name: 'Home'}">home</router-link></div>
+        <div class="hidden lg:block underline text-zinc-500"><router-link :to="{name: 'Home'}">home</router-link></div>
       </div>
       <div class="my-4 flex flex-wrap items-baseline gap-2">
         <div><CustomInput label="hue" name="hue" id="hue" 
@@ -26,12 +26,12 @@
           get new palette
         </CustomButton></div>
       </div>
-      <div class="mt-2 text-slate-600 font-thin">
+      <div class="mt-2 text-zinc-600 font-thin">
         Using the <code>/scheme</code> endpoint, results are calculated for the HSL value. Showing results for: 
         <code v-if="!state.loading && state.currentHsl" class="text-lg whitespace-nowrap">{{ state.currentHsl }}</code> 
         <PendingDots v-else/>
       </div>
-      <div class="mt-2 text-slate-600 font-thin">
+      <div class="mt-2 text-zinc-600 font-thin">
         Colors are deduplicated by color name; only one tile per color name is presented.
         <span class="font-thin">
           Unique color names: <code v-if="!state.loading && state.uniqueColors.length" class="text-lg">{{state.uniqueColors.length}}</code>

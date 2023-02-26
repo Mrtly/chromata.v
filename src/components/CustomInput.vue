@@ -3,7 +3,7 @@
     <label 
       :for="props.name" 
       :class="['mr-2 block font-medium',
-        props.disabled ? 'text-slate-400' : 'text-slate-700']"> 
+        props.disabled ? 'text-zinc-400' : 'text-zinc-700']"> 
       {{ props.label }}
     </label>
     <input 
@@ -15,7 +15,7 @@
       :min="props.type === 'number' ? props.min :null"
       :max="props.type === 'number' ? props.max :null"
       @input="onInput"
-      class="block border border-burnt w-32 px-2 rounded h-10 mr-5 disabled:border-slate-400 disabled:text-slate-400" 
+      class="block border border-burnt w-32 px-2 rounded h-10 mr-5 disabled:border-zinc-400 disabled:text-zinc-400" 
     >
   </div>
 </template>

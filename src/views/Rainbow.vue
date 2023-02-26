@@ -4,7 +4,7 @@
     <div class="border-b border-burnt shadow-md p-5 lg:px-10 lg:py-6">
       <div class="flex items-center justify-between">
         <h1 class="pt-2 text-xl font-medium">Create a rainbow palette with saturation & lightness variance</h1>
-        <div class="hidden lg:block underline text-slate-500"><router-link :to="{name: 'Home'}">home</router-link></div>
+        <div class="hidden lg:block underline text-zinc-500"><router-link :to="{name: 'Home'}">home</router-link></div>
       </div>
       <div class="my-4 flex flex-wrap items-baseline gap-2">
         <div><CustomInput label="saturation" name="saturation" id="saturation" 
@@ -21,12 +21,12 @@
             get new palette
           </CustomButton></div>
       </div>
-      <div class="mt-2 text-slate-600 font-thin">
+      <div class="mt-2 text-zinc-600 font-thin">
         Using the <code>/id</code> endpoint, results are calculated using hues from every 7th degree across the 360° color circle, and the saturation/lightness values: 
         <code v-if="!state.loading && state.currentSL" class="text-lg whitespace-nowrap">{{ state.currentSL }}</code>
         <PendingDots v-else/>
         </div>
-      <div class="mt-2 text-slate-600 font-thin">
+      <div class="mt-2 text-zinc-600 font-thin">
         Colors are deduplicated by color name; only one tile per color name is presented.
         <span class="font-thin">
           Unique color names: <code v-if="!state.loading && state.uniqueColors.length" class="text-lg">{{state.uniqueColors.length}}</code>

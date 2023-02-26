@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="w-screen min-h-screen">
+  <div id="app" class="w-screen min-h-screen font-ubuntu text-zinc-900">
     <TopBanner/>
     <router-view />
   </div>
