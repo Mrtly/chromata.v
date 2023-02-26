@@ -1,7 +1,12 @@
 <template>
-  <div class="w-10 h-10 bg-red-400"/>
+  <div id="app" class="w-screen min-h-screen">
+    <TopBanner/>
+  
+      <router-view />
+  </div>
 </template>
 
-<script setup>
 
+<script setup>
+import TopBanner from './components/TopBanner.vue'
 </script>
