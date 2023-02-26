@@ -1,7 +1,6 @@
 <template>
   <div class="min-h-[100px] p-4 bg-slate-900 text-white">
     <div class="flex items-center justify-between">
-
       <router-link :to="{name: 'Home'}">
           <div class="w-max p-2 flex items-center border border-transparent hover:border-slate-700">
             <div class="h-12 w-12 bg-amber-700"></div>
@@ -11,7 +10,6 @@
             </div>
         </div>
       </router-link>
-      
       <div class="flex items-center">
         <span class="hidden lg:block">
           <router-link class="underline text-slate-500 hover:text-slate-300" :to="{name: 'Home'}">home</router-link>

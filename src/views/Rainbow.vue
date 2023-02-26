@@ -21,15 +21,14 @@
             get new palette
           </CustomButton></div>
       </div>
-    
-      <div class="mt-2 text-slate-500 font-thin">
-        Results are calculated using hues from every 7th degree across the 360 color circle, and the saturation/lightness values: 
-        <span v-if="!state.loading && state.currentSL" class="font-medium text-lg">{{ state.currentSL }}</span> 
+      <div class="mt-2 text-slate-600 font-thin">
+        Using the <code>/id</code> endpoint, results are calculated using hues from every 7th degree across the 360° color circle, and the saturation/lightness values: 
+        <code v-if="!state.loading && state.currentSL" class="text-lg whitespace-nowrap">{{ state.currentSL }}</code> 
       </div>
-      <div class="mt-2 text-slate-500 font-thin">
+      <div class="mt-2 text-slate-600 font-thin">
         Colors are deduplicated by color name; only one tile per color name is presented.
-        <span class="text-slate-500 font-thin">
-          Unique color names: <span v-if="!state.loading && state.uniqueColors.length"  class="font-medium text-lg">{{state.uniqueColors.length}}</span>
+        <span class="font-thin">
+          Unique color names: <code v-if="!state.loading && state.uniqueColors.length" class="text-lg">{{state.uniqueColors.length}}</code>
         </span>
       </div>
     </div>
@@ -82,7 +81,7 @@ const getColors = async () => {
 
   state.uniqueColors = deDuplicateByName(state.colors);
 
-  state.currentSL = `s: ${queries.s}, l: ${queries.l}`
+  state.currentSL = `s: ${queries.s}%, l: ${queries.l}%`
 
   state.loading = false;
 }
