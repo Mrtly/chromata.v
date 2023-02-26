@@ -42,12 +42,17 @@
     <!-- colors -->
     <div>
       <Spinner v-if="state.loading" class="mx-auto mt-10"/>
-      <div v-else class="p-10">
-        <div class="flex flex-wrap gap-4">
-        <ColorSquarie v-for="color in state.uniqueColors" 
-          :key="color" 
-          :colorName="color.name.value"
-          :colorRgb="color.rgb.value"/>
+      <div v-else>
+        <div v-if="error" class="text-fire m-10">
+          Oh no! Something went wrong. Please try again later.
+        </div>
+        <div v-else class="p-10">
+          <div class="flex flex-wrap gap-4">
+          <ColorSquarie v-for="color in state.uniqueColors" 
+            :key="color" 
+            :colorName="color.name.value"
+            :colorRgb="color.rgb.value"/>
+          </div>
         </div>
       </div>
     </div>
@@ -55,7 +60,7 @@
 </template>
 
 <script setup>
-import { computed, onMounted, reactive } from 'vue'
+import { ref, computed, onMounted, reactive } from 'vue'
 import ColorSquarie from '../components/ColorSquarie.vue';
 import Spinner from '../components/Spinner.vue';
 import PendingDots from '../components/PendingDots.vue';
@@ -63,12 +68,20 @@ import CustomInput from '../components/CustomInput.vue';
 import CustomButton from '../components/CustomButton.vue';
 import { deDuplicateByName } from '../utils/dedupe';
 
-const state = reactive({ allColors: [], uniqueColors: [], currentHsl: '', loading: false })
+const state = reactive({ 
+  allColors: [], 
+  uniqueColors: [], 
+  currentHsl: '', 
+  loading: false 
+})
+
 const queries = reactive({ h: 20, s: 100, l: 50, size: 500 })
 
-const base = "https://www.thecolorapi.com/scheme?"
-const format = "format=json"
-const count = computed(() => `count=${queries.size}`)
+const error = ref(false);
+
+const base = "https://www.thecolorapi.com/scheme?";
+const format = "format=json";
+const count = computed(() => `count=${queries.size}`);
 
 const url = computed(() => {
   return `${base}hsl=${queries.h},${queries.s}%,${queries.l}%&${format}&${count.value}`
@@ -76,20 +89,27 @@ const url = computed(() => {
 
 const getColors = async () => {
   state.loading = true;
-  state.colors = []; //clear
+  state.allColors = []; //clear
   state.uniqueColors = []; //clear
   state.currentHsl = ''; //clear
   
-  await fetch(url.value)
-  .then((response) => response.json())
-  .then((data) => state.allColors = data.colors);
-  
-  state.uniqueColors = deDuplicateByName(state.allColors);
+  try {
+    await fetch(url.value)
+      .then((response) => response.json())
+      .then((data) => state.allColors = data.colors);
 
-  state.currentHsl = `hsl(${queries.h}, ${queries.s}%, ${queries.l}%)`;
+    if (state.allColors) {
+      state.uniqueColors = deDuplicateByName(state.allColors);
 
-  //fake delay so that loading spinner does not look like a glitch
-  setTimeout(() => { state.loading = false }, 1000);
+      state.currentHsl = `hsl(${queries.h}, ${queries.s}%, ${queries.l}%)`;
+    }
+  } catch (err) {
+    error.value = true;
+
+  } finally {
+    //fake delay so that loading spinner does not look like a glitch
+    setTimeout(() => { state.loading = false }, 1000);
+  }
 }
 
 onMounted(() => getColors())

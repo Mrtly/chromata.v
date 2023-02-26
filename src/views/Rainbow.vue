@@ -37,11 +37,16 @@
     <!-- colors -->
     <div>
       <Spinner v-if="state.loading" class="mx-auto mt-10"/>
-      <div v-else class="p-10 flex flex-wrap gap-4">
-        <div v-for="color in state.uniqueColors" :key="color">
-          <ColorSquarie 
-            :colorRgb="color.rgb.value"
-            :colorName="color.name.value"/>
+      <div v-else>
+        <div v-if="error" class="text-fire m-10">
+          Oh no! Something went wrong. Please try again later.
+        </div>
+        <div v-else class="p-10 flex flex-wrap gap-4">
+          <div v-for="color in state.uniqueColors" :key="color">
+            <ColorSquarie 
+              :colorRgb="color.rgb.value"
+              :colorName="color.name.value"/>
+          </div>
         </div>
       </div>
     </div>
@@ -49,7 +54,7 @@
 </template>
 
 <script setup>
-import { computed, reactive, watch, onMounted } from 'vue'
+import { ref, computed, reactive, onMounted } from 'vue'
 import ColorSquarie from '../components/ColorSquarie.vue';
 import Spinner from '../components/Spinner.vue';
 import PendingDots from '../components/PendingDots.vue';
@@ -57,8 +62,16 @@ import CustomInput from '../components/CustomInput.vue';
 import CustomButton from '../components/CustomButton.vue';
 import { deDuplicateByName } from '../utils/dedupe';
 
-const state = reactive({ colors: [], uniqueColors: [], currentSL: '', loading: false })
-const queries = reactive({ s: 100, l: 50 })
+const state = reactive({ 
+  allColors: [], 
+  uniqueColors: [], 
+  currentSL: '', 
+  loading: false 
+});
+
+const queries = reactive({ s: 100, l: 50 });
+
+const error = ref(false);
 
 const rainbowHues = computed(() => {
   let arr = [];
@@ -71,22 +84,28 @@ const rainbowHues = computed(() => {
 
 const getColors = async () => {
   state.loading = true;
-  state.colors = []; //clear
+  state.allColors = []; //clear
   state.uniqueColors = []; //clear
   
-  for (let hue in rainbowHues.value) {
-    let hueQuery = rainbowHues.value[hue];
-    let url = `https://www.thecolorapi.com/id?hsl=${hueQuery},${queries.s}%,${queries.l}%&format=json`
-    await fetch(url)
-      .then((response) => response.json())
-      .then((data) => state.colors.push(data));
+  try {
+    for (let hue in rainbowHues.value) {
+      let hueQuery = rainbowHues.value[hue];
+      let url = `https://www.thecolorapi.com/id?hsl=${hueQuery},${queries.s}%,${queries.l}%&format=json`
+      await fetch(url)
+        .then((response) => response.json())
+        .then((data) => state.allColors.push(data));
+      }
+    if (state.allColors) {
+      state.uniqueColors = deDuplicateByName(state.allColors);
+
+      state.currentSL = `s: ${queries.s}%, l: ${queries.l}%`;
+    }
+  } catch (err) {
+    error.value = true;
+
+  } finally {
+    state.loading = false;
   }
-
-  state.uniqueColors = deDuplicateByName(state.colors);
-
-  state.currentSL = `s: ${queries.s}%, l: ${queries.l}%`;
-
-  state.loading = false;
 }
 
 onMounted(() => getColors())
