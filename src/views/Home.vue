@@ -10,13 +10,13 @@
     <div>
       <router-link 
         :to="{name: 'Rainbow'}"
-        class="block mx-auto shadow hover:shadow-xl transition-all duration-200 border px-10 py-8 underline text-amber-800 w-max text-2xl">
+        class="block mx-auto shadow hover:shadow-xl transition-all duration-200 border p-10 underline text-fire w-max text-2xl">
         Create a rainbow palette
       </router-link>
       <div class="my-5"/> <!-- divider -->
       <router-link 
         :to="{name: 'Scheme'}"
-        class="block mx-auto shadow hover:shadow-xl transition-all duration-200 border px-10 py-8 underline text-amber-800 w-max text-2xl">
+        class="block mx-auto shadow hover:shadow-xl transition-all duration-200 border p-10 underline text-fire w-max text-2xl">
         Create a palette from a HSL scheme
       </router-link>
     </div>

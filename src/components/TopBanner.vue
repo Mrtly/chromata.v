@@ -3,7 +3,7 @@
     <div class="flex items-center justify-between">
       <router-link :to="{name: 'Home'}">
           <div class="w-max p-2 flex items-center border border-transparent hover:border-slate-700">
-            <div class="h-12 w-12 bg-amber-700"></div>
+            <div class="h-12 w-12 bg-burnt"></div>
             <div class="ml-3">
               <h1 class="text-2xl font-medium tracking-wider">Chromata</h1>
               <span class="font-thin text-slate-400">using thecolorapi</span>

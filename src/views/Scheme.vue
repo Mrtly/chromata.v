@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- inputs -->
-    <div class="border-b-2 border-amber-700 p-5 lg:px-10 lg:py-6">
+    <div class="border-b border-burnt shadow-md p-5 lg:px-10 lg:py-6">
       <div class="flex items-center justify-between">
         <h1 class="pt-2 text-xl font-medium">Create a palette based on color scheme per HSL values</h1>
         <div class="hidden lg:block underline text-slate-500"><router-link :to="{name: 'Home'}">home</router-link></div>
