@@ -23,12 +23,14 @@
       </div>
       <div class="mt-2 text-slate-600 font-thin">
         Using the <code>/id</code> endpoint, results are calculated using hues from every 7th degree across the 360° color circle, and the saturation/lightness values: 
-        <code v-if="!state.loading && state.currentSL" class="text-lg whitespace-nowrap">{{ state.currentSL }}</code> 
-      </div>
+        <code v-if="!state.loading && state.currentSL" class="text-lg whitespace-nowrap">{{ state.currentSL }}</code>
+        <PendingDots v-else/>
+        </div>
       <div class="mt-2 text-slate-600 font-thin">
         Colors are deduplicated by color name; only one tile per color name is presented.
         <span class="font-thin">
           Unique color names: <code v-if="!state.loading && state.uniqueColors.length" class="text-lg">{{state.uniqueColors.length}}</code>
+          <PendingDots v-else/>
         </span>
       </div>
     </div>
@@ -50,6 +52,7 @@
 import { computed, reactive, watch, onMounted } from 'vue'
 import ColorSquarie from '../components/ColorSquarie.vue';
 import Spinner from '../components/Spinner.vue';
+import PendingDots from '../components/PendingDots.vue';
 import CustomInput from '../components/CustomInput.vue';
 import CustomButton from '../components/CustomButton.vue';
 import { deDuplicateByName } from '../utils/dedupe';
@@ -81,11 +84,11 @@ const getColors = async () => {
 
   state.uniqueColors = deDuplicateByName(state.colors);
 
-  state.currentSL = `s: ${queries.s}%, l: ${queries.l}%`
+  state.currentSL = `s: ${queries.s}%, l: ${queries.l}%`;
 
   state.loading = false;
 }
 
-onMounted(()=> getColors() )
+onMounted(() => getColors())
 
 </script>

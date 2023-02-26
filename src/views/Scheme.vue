@@ -29,12 +29,14 @@
       <div class="mt-2 text-slate-600 font-thin">
         Using the <code>/scheme</code> endpoint, results are calculated for the HSL value. Showing results for: 
         <code v-if="!state.loading && state.currentHsl" class="text-lg whitespace-nowrap">{{ state.currentHsl }}</code> 
+        <PendingDots v-else/>
       </div>
       <div class="mt-2 text-slate-600 font-thin">
         Colors are deduplicated by color name; only one tile per color name is presented.
         <span class="font-thin">
           Unique color names: <code v-if="!state.loading && state.uniqueColors.length" class="text-lg">{{state.uniqueColors.length}}</code>
-        </span>
+          <PendingDots v-else/>
+      </span>
       </div>
     </div>
     <!-- colors -->
@@ -56,6 +58,7 @@
 import { computed, onMounted, reactive } from 'vue'
 import ColorSquarie from '../components/ColorSquarie.vue';
 import Spinner from '../components/Spinner.vue';
+import PendingDots from '../components/PendingDots.vue';
 import CustomInput from '../components/CustomInput.vue';
 import CustomButton from '../components/CustomButton.vue';
 import { deDuplicateByName } from '../utils/dedupe';
@@ -75,19 +78,20 @@ const getColors = async () => {
   state.loading = true;
   state.colors = []; //clear
   state.uniqueColors = []; //clear
-  state.currentHsl = '' //clear
+  state.currentHsl = ''; //clear
   
   await fetch(url.value)
   .then((response) => response.json())
   .then((data) => state.allColors = data.colors);
   
-  state.uniqueColors = deDuplicateByName(state.allColors)
+  state.uniqueColors = deDuplicateByName(state.allColors);
 
-  state.currentHsl = `hsl(${queries.h}, ${queries.s}%, ${queries.l}%)`
+  state.currentHsl = `hsl(${queries.h}, ${queries.s}%, ${queries.l}%)`;
 
-  state.loading = false;
+  //fake delay so that loading spinner does not look like a glitch
+  setTimeout(() => { state.loading = false }, 1000);
 }
 
-onMounted(()=> getColors() )
+onMounted(() => getColors())
 
 </script>
