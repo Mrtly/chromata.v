@@ -16,7 +16,7 @@
           <span class="mx-5 text-slate-400">|</span>
           <router-link class="underline text-slate-400 hover:text-slate-300" :to="{name: 'Rainbow'}">rainbow palette</router-link>
           <span class="mx-5 text-slate-400">|</span>
-          <router-link class="underline text-slate-400 hover:text-slate-300" :to="{name: 'Scheme'}">palette by HSL scheme</router-link>
+          <router-link class="underline text-slate-400 hover:text-slate-300" :to="{name: 'Scheme'}">color scheme palette</router-link>
           <span class="mx-5 text-slate-400">|</span>
         </span>
         <a href="https://www.thecolorapi.com/" target="_blank" class="flex items-center underline text-slate-400 hover:text-slate-300">thecolorapi.com<External class="ml-2 w-5 h-5"/></a>
