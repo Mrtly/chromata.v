@@ -1,7 +1,7 @@
 <template>
   <div class="h-[calc(100vh-100px)] flex flex-col items-center justify-center">
     <div class="mb-10 max-w-3xl text-center text-lg px-5 lg:px-0">
-      <div class="text-xl font-medium text-zinc-700">A fun little color project using thecolorapi's enpoints for <code>/id</code> and <code>/scheme</code>.</div>
+      <div class="text-xl font-medium text-zinc-700">A fun little color project using thecolorapi's endpoints for <code>/id</code> and <code>/scheme</code>.</div>
      
      
       

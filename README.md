@@ -2,7 +2,7 @@
 
 <div style="height:60px; width:60px; background-color:red; opacity:75%; display: inline-block;"></div><div style="height:60px; width:60px; background-color:green; opacity:75%; display: inline-block; margin: 0 5px 0 5px;"></div><div style="height:60px; width:60px; background-color:blue; opacity:75%; display: inline-block;"></div>
 
-A fun little color project with [thecolorapi](https://www.thecolorapi.com/), using the enpoints for <code>/id</code> and <code>/scheme</code>.
+A fun little color project with [thecolorapi](https://www.thecolorapi.com/), using the endpoints for <code>/id</code> and <code>/scheme</code>.
 
 > "Chromata" is Greek for "colors"
 
