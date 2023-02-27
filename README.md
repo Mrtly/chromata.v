@@ -1,14 +1,14 @@
-### Chromata
+## Chromata
 
 <div style="height:60px; width:60px; background-color:red; opacity:75%; display: inline-block;"></div><div style="height:60px; width:60px; background-color:green; opacity:75%; display: inline-block; margin: 0 5px 0 5px;"></div><div style="height:60px; width:60px; background-color:blue; opacity:75%; display: inline-block;"></div>
 
-A fun little color project with thecolorapi.com, using the enpoints for <code>/id</code> and <code>/scheme</code>.
+A fun little color project with [thecolorapi](https://www.thecolorapi.com/), using the enpoints for <code>/id</code> and <code>/scheme</code>.
 
 > "Chromata" is Greek for "colors"
 
 <br/>
 
-#### visit [chromata.vercel.app](https://chromata.vercel.app/)
+### visit [chromata.vercel.app](https://chromata.vercel.app/)
 
 <br/>
 
@@ -18,18 +18,24 @@ or run it locally, after installing dependencies:
 
 <hr/>
 
-##### stack
-
-- Vue 3 on Vite, with vue-router
-- JavaScript & Tailwind CSS
-
-##### features
+#### features
 
 -  **Rainbow palette** 
 Create a rainbow palette of colors spanning across the color circle.
 
 - **Color scheme palette**
 Create color schemes and experiment with various HSL values.
+
+#### screenshots
+
+<img height="320" alt="Screen Shot 2023-02-27 at 9 29 37 AM" src="https://user-images.githubusercontent.com/50080618/221592313-27d9bda5-91f6-46b0-8ccd-0e54025538a2.png">  <img height="270" alt="Screen Shot 2023-02-27 at 9 30 40 AM" src="https://user-images.githubusercontent.com/50080618/221592308-da9f1500-7336-425c-8df4-8ae4920d9eb2.png">
+
+<img height="320" alt="Screen Shot 2023-02-27 at 9 29 46 AM" src="https://user-images.githubusercontent.com/50080618/221592311-6d19ba12-36ab-4874-89ba-017b83582a8d.png">  <img height="270" alt="Screen Shot 2023-02-27 at 9 30 25 AM" src="https://user-images.githubusercontent.com/50080618/221592309-929e5067-37d3-4039-943a-3a8bd1cbf3cd.png">
+
+#### stack
+
+- Vue 3 on Vite, with vue-router
+- JavaScript & Tailwind CSS
 
 <hr/>
 
