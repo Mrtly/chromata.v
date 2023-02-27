@@ -6,8 +6,12 @@ module.exports = {
         ubuntu: 'Ubuntu'
       },
       colors: {
-        burnt: 'rgb(191, 66, 4)',
-        fire: 'rgb(159, 44, 3)'
+        // palette from /scheme of hsl(190, 55%, 50%)
+        cello: 'rgb(30, 86, 98)',
+        elm: 'rgb(34, 97, 110)',
+        jellyBean: 'rgb(41, 121, 138)',
+        bostonBlue: 'rgb(63, 146, 166)',
+        moonstone: 'rgb(52, 158, 180)'
       }
     },
   },

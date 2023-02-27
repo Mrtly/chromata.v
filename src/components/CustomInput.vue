@@ -15,7 +15,7 @@
       :min="props.type === 'number' ? props.min :null"
       :max="props.type === 'number' ? props.max :null"
       @input="onInput"
-      class="block border border-burnt w-32 px-2 rounded h-10 mr-5 disabled:border-zinc-400 disabled:text-zinc-400" 
+      class="block border-2 border-jellyBean w-32 px-2 rounded h-10 mr-5 disabled:border-zinc-400 disabled:text-zinc-400" 
     >
   </div>
 </template>
