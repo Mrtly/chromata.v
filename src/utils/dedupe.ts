@@ -1,5 +1,11 @@
-export function deduplicateByName(arr) {
-  const unique = [];
+interface Item {
+  name: {
+    value: string;
+  };
+}
+
+export function deduplicateByName(arr: Item[]): Item[] {
+  const unique: Item[] = [];
   for (const item of arr) {
     const isDuplicate = unique.find(
       (obj) => obj.name.value === item.name.value,

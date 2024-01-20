@@ -1,5 +1,7 @@
 <template>
-  <button class="h-max w-max px-4 py-2 bg-jellyBean text-white tracking-wide font-medium active:bg-elm disabled:bg-zinc-400 shadow hover:shadow-xl rounded transition-all duration-200">
-    <slot/>
+  <button
+    class="bg-lochmara hover:bg-cerulean h-max w-max rounded px-4 py-1.5 text-lg tracking-wider text-white shadow transition-all duration-200 hover:shadow-md disabled:bg-zinc-400"
+  >
+    <slot />
   </button>
 </template>
